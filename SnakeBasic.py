@@ -22,7 +22,7 @@ class Snake:
         self.color = color
         # self.hitbox = (self.x, self.y, self.width, self.height)
         self.score = score
-        self.high_score = high_score
+        self.high_score = high_score = 0
 
     def draw_snake(self):
         """ Redraws rectangles that are the "Snake". """
