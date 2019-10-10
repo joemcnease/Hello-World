@@ -22,6 +22,7 @@ class Snake:
         self.color = color
         # self.hitbox = (self.x, self.y, self.width, self.height)
         self.score = score
+        self.high_score = high_score
 
     def draw_snake(self):
         """ Redraws rectangles that are the "Snake". """
@@ -53,11 +54,15 @@ class Snake:
         death_sound.play()
         Snake.snake_body = []
         Food.food = []
+        self.score = 0
+        print("High Score: ", self.high_score)
         player1.x, player1.y = 400, 400
 
     def add_score(self):
         score_sound.play()
         self.score += 1
+        if self.score > self.high_score:
+            self.high_score = self.score
 
 class Food:
     """ Food class. """
