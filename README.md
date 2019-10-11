@@ -4,20 +4,19 @@ Snake is a 2-D multiplayer game based on the original Snake made by Nokia in 199
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine so you can play Snake.
+After following the installation section and running the program you will see a start screen. To begin the game click 'Play' and the snake/snakes will start moving on the screen. To control the snakes use the arrow keys for player one and the wasd keys for player 2. The game will save your high score in a text file that will be created in the directory the game is saved to.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-examples
-```
+* Python 3
+* Pygame
 
 ### Installing
 
-A step by step series of examples that tell you how to get Snake running.
-
+Install with git clone
+```
+git clone https://github.com/joemcnease/Snake.git
+```
 
 ## Built With
 
@@ -25,7 +24,7 @@ A step by step series of examples that tell you how to get Snake running.
 
 ## Contributing
 
-Please feel free to submit a pull request.
+Please feel free to submit a pull request if you would like to fix any bugs or add any features.
 
 ## Authors
 
@@ -37,7 +36,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+* Inspiration from Nokia's original Snake game
