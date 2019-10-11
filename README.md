@@ -13,7 +13,7 @@ After following the installation section and running the program you will see a 
 
 ### Installing
 
-Install with git clone
+* Install with git clone
 ```
 git clone https://github.com/joemcnease/Snake.git
 ```
