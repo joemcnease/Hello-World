@@ -55,7 +55,6 @@ class Snake:
         Snake.snake_body = []
         Food.food = []
         self.score = 0
-        print("High Score: ", self.high_score)
         player1.x, player1.y = 400, 400
 
     def add_score(self):
@@ -97,6 +96,11 @@ def redraw_game_window():
     """
     screen.fill((0,0,0))
     player1.draw_snake()
+    screen.blit(font.render("High Score: " + str(player1.high_score), True, (255, 255, 255)),
+                (win.width/10, win.height/100))
+    screen.blit(font.render("Score: " + str(player1.score), True, (255, 255, 255)),
+                (win.width/1.5, win.height/100))
+    pygame.draw.line(screen, (255,255,255), (0, 50), (win.width, 50), 3)
     for s in Snake.snake_body:
         s.draw_snake()
     for f in Food.food:
@@ -105,18 +109,20 @@ def redraw_game_window():
     pygame.display.update()
 
 # Initialize pygame and mixer (sounds)
-pygame.mixer.pre_init(44100, -16, 2, 64)
-pygame.mixer.init()
+pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
 
 # Vital objects and variables to instantiate and initialize
 win = Window(800, 800)
 screen = pygame.display.set_mode((win.width, win.height))
 pygame.display.set_caption("Snake")
+font = pygame.font.Font(None, 72)
 
 # Create instance of sound
 death_sound = pygame.mixer.Sound('WallHit.ogg')
 score_sound = pygame.mixer.Sound('ScoreUpSound.ogg')
+pygame.mixer.music.load('HumbleMatch.ogg')
+pygame.mixer.music.play(-1)
 
 player1 = Snake(400, 400, 20, 20, 10)
 
@@ -147,6 +153,12 @@ while run:
     if player1.x == win.width - player1.width or player1.x == 0 or player1.y == win.height - player1.height or player1.y == 0:
         player1.death()
 
+    # Checks if head contacts tail and if that is True, the player1.death() function is called
+    #for snake in Snake.snake_body:
+    #    if snake.x > player1.x and snake.x < player1.x + player1.width:
+    #        if snake.y > player1.y - player1.height and snake.y < player1.y:
+    #            player1.death()
+
     # If there is no food, add a piece.
     # If there is check if snake head is touching, if True empty food list and add another item to snake_list.
     if Food.food == []:
@@ -157,7 +169,6 @@ while run:
                 if f.y + f.radius > player1.y - (player1.height/3) and f.y - f.radius < player1.y + player1.height:
                     Food.food.remove(f)
                     player1.add_score()
-                    print(player1.score)
 
                     # Add segment to snake
                     tail = Snake(player1.x, player1.y, player1.width, player1.height, player1.velocity)
